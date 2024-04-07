@@ -1,16 +1,13 @@
-import requests
-import os
-
-import api
+from api import Request
+from filehandler import FileHandler
 
 
-class FileHandler:
-    def __init__(self):
-        with open('buffer.json', 'r') as f:
-            data = f.read()
-            if data == '':
-                with open('buffer.json', 'w') as f:
-                    f.write(api.Request().get())
+class Main:
+    def get_price(self, price):
+        return Request().enter_field(price)
+
+    def convertor(self, uah, value):
+        return Request().converter(uah, value)
 
 
-FileHandler()
+print(Main().convertor(50, 'USD'))
